@@ -8,20 +8,6 @@ var APIkey = '1e8651b92cc9448eb4ff9216c557959f';
 
 var ingArr = [];
 
-// fetch request for the spoon APIkey. userInput var is a placeholder 
-function getRecipe() {
-    ingArr= ['chicken', 'feta cheese', 'olive oil'];
-    let spoonAPI = 'https://api.spoonacular.com/recipes/findByIngredients?apiKey=' + APIkey + '&ingredients=' + ingArr + '&number=5';
-    
-    fetch(spoonAPI)
-        .then(function (response) {
-            return response.json();
-        })
-        .then(function (data) {
-            console.log(data);
-        })
-};
-
 addBtnEl.addEventListener('click', function(event) {
     event.preventDefault();
     if (ingArr.includes(userInput.value) || userInput.value === "") {
@@ -35,6 +21,23 @@ addBtnEl.addEventListener('click', function(event) {
     userInput.value = '';
 });
 
+// fetch request for the spoon APIkey. 
+function getRecipe(ingArr) {
+    console.log(ingArr);
+    if(ingArr ===[]) {
+        return;
+    };
+    let spoonAPI = 'https://api.spoonacular.com/recipes/findByIngredients?apiKey=' + APIkey + '&ingredients=' + ingArr + '&number=5';
+    
+    fetch(spoonAPI)
+        .then(function (response) {
+            return response.json();
+        })
+        .then(function (data) {
+            console.log(data);
+        })
+};
+
 clearBtnEl.addEventListener('click', function(event) {
     event.preventDefault();
     ingArr = [];
@@ -42,4 +45,7 @@ clearBtnEl.addEventListener('click', function(event) {
         ingList.removeChild(ingList.firstChild);
     }
 })
-submitBtnEl.addEventListener('click', getRecipe);
+submitBtnEl.addEventListener('click', function(event) {
+    event.preventDefault();
+    getRecipe(ingArr);
+});
