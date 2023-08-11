@@ -44,7 +44,8 @@ clearBtnEl.addEventListener('click', function(event) {
     while(ingList.firstChild) {
         ingList.removeChild(ingList.firstChild);
     }
-})
+});
+
 submitBtnEl.addEventListener('click', function(event) {
     event.preventDefault();
     getRecipe(ingArr);
