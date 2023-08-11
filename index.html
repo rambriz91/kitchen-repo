@@ -9,6 +9,7 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="./assets/reset.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/style.css">
 </head>
 
@@ -33,14 +34,14 @@
         <section>
             <h2></h2>
             <div>
-                <ul></ul>
+                <ul id="ingList"></ul>
             </div>
             <div>
                 <form action="">
-                    <textarea name="" id="" cols="30" rows="10"></textarea>
-                    <button>Add</button>
-                    <button>Clear List</button>
-                    <button>Submit</button>
+                    <input  id= "userInput" type="text">
+                    <button class="button is-success" id="addBtn">Add</button>
+                    <button class="button is-success" id="clearList">Clear List</button>
+                    <button class="button is-success" id="submit">Submit</button>
                 </form>
             </div>
             <p></p>
