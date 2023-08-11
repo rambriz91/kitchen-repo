@@ -21,6 +21,7 @@ function getRecipe() {
             console.log(data);
         })
 };
+
 addBtnEl.addEventListener('click', function(event) {
     event.preventDefault();
     if (ingArr.includes(userInput.value) || userInput.value === "") {
@@ -34,4 +35,11 @@ addBtnEl.addEventListener('click', function(event) {
     userInput.value = '';
 });
 
+clearBtnEl.addEventListener('click', function(event) {
+    event.preventDefault();
+    ingArr = [];
+    while(ingList.firstChild) {
+        ingList.removeChild(ingList.firstChild);
+    }
+})
 submitBtnEl.addEventListener('click', getRecipe);
