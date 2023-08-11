@@ -3,6 +3,10 @@ var clearBtnEl = document.getElementById('clearList');
 var submitBtnEl = document.getElementById('submit');
 var userInput = document.getElementById('userInput');
 var ingList = document.getElementById('ingList')
+var recipeImgEl = document.getElementById('recipeImg');
+var recipeName = document.getElementById('recipeName');
+var recipeBtnHolder = document.getElementById('recipeBtnHolder');
+var stepsEl = document.getElementById('steps');
 
 var APIkey = '1e8651b92cc9448eb4ff9216c557959f';
 
@@ -34,7 +38,14 @@ function getRecipe(ingArr) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
+            for (let i = 0; i < 5; i++) {
+                let recipeBtn = document.createElement('button');
+                recipeBtn.textContent = data[i].title;
+                recipeBtn.setAttribute('class', 'is-primary button');
+                recipeBtn.setAttribute('data-id', data[i].id);
+                recipeBtn.setAttribute('data-img', data[i].image);
+                recipeBtnHolder.appendChild(recipeBtn);
+            };
         })
 };
 
@@ -50,3 +61,22 @@ submitBtnEl.addEventListener('click', function(event) {
     event.preventDefault();
     getRecipe(ingArr);
 });
+
+recipeBtnHolder.addEventListener('click', (event) => {
+    let chosenRecipe = event.target.getAttribute('data-id');
+    recipeName.textContent = event.target.textContent;
+    recipeImgEl.src = event.target.getAttribute('data-img');
+    let recipeById ='https://api.spoonacular.com/recipes/' + chosenRecipe + '/analyzedInstructions?apiKey=' + APIkey +'';
+    fetch(recipeById)
+        .then(function(response) {
+            return response.json();
+        })
+        .then (function(data) {
+            console.log(data)
+            for (let i = 0; i < data[0].steps.length; i++) {
+            let step = document.createElement('li');
+            step.textContent = data[0].steps[i].step;
+            stepsEl.appendChild(step);
+        }
+        })
+})
