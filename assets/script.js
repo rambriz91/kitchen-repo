@@ -42,6 +42,8 @@ function getRecipe(ingArr) {
                 recipeBtn = document.createElement('button');
                 recipeBtn.textContent = data[i].title;
                 recipeBtn.setAttribute('class', 'is-primary button');
+                recipeBtn.setAttribute('data-id', data[i].id);
+                recipeBtn.setAttribute('data-img', data[i].image);
                 recipeBtnHolder.appendChild(recipeBtn);
             };
         })
@@ -59,3 +61,10 @@ submitBtnEl.addEventListener('click', function(event) {
     event.preventDefault();
     getRecipe(ingArr);
 });
+
+recipeBtnHolder.addEventListener('click', (event) => {
+    let chosenRecipe = event.target.getAttribute('data-id');
+    recipeName.textContent = event.target.textContent;
+    recipeImgEl.src = event.target.getAttribute('data-img');
+    let recipeById ='https://api.spoonacular.com/recipes/' + chosenRecipe + '/analyzedInstructions';
+})
