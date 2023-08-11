@@ -3,6 +3,9 @@ var clearBtnEl = document.getElementById('clearList');
 var submitBtnEl = document.getElementById('submit');
 var userInput = document.getElementById('userInput');
 var ingList = document.getElementById('ingList')
+var recipeImgEl = document.getElementById('recipeImg');
+var recipeName = document.getElementById('recipeName');
+var recipeBtnHolder = document.getElementById('recipeBtnHolder');
 
 var APIkey = '1e8651b92cc9448eb4ff9216c557959f';
 
@@ -35,6 +38,12 @@ function getRecipe(ingArr) {
         })
         .then(function (data) {
             console.log(data);
+            for (let i = 0; i < 5; i++) {
+                recipeBtn = document.createElement('button');
+                recipeBtn.textContent = data[i].title;
+                recipeBtn.setAttribute('class', 'is-primary button');
+                recipeBtnHolder.appendChild(recipeBtn);
+            };
         })
 };
 
