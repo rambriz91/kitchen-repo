@@ -13,6 +13,7 @@ var APIkey = '1e8651b92cc9448eb4ff9216c557959f';
 
 var ingArr = [];
 
+//Allows the user to add an ingredient to the ingArr which will then be used in a fetch request.
 addBtnEl.addEventListener('click', function (event) {
     event.preventDefault();
     if (ingArr.includes(userInput.value) || userInput.value === "") {
@@ -26,7 +27,7 @@ addBtnEl.addEventListener('click', function (event) {
     userInput.value = '';
 });
 
-// fetch request for the spoon APIkey. 
+// fetch request for the spoon APIkey. The fxn generates 5 recipes based on the ingredients in ingArr.
 function getRecipe(ingArr) {
     if (ingArr === []) {
         return;
@@ -38,7 +39,6 @@ function getRecipe(ingArr) {
             return response.json();
         })
         .then(function (data) {
-            console.log(data);
             for (let i = 0; i < 5; i++) {
                 let recipeBtn = document.createElement('button');
                 recipeBtn.textContent = data[i].title;
@@ -62,7 +62,7 @@ function getRecipe(ingArr) {
             };
         })
 };
-
+//clears the ingredients list (ingArr)
 clearBtnEl.addEventListener('click', function (event) {
     event.preventDefault();
     ingArr = [];
@@ -71,11 +71,13 @@ clearBtnEl.addEventListener('click', function (event) {
     }
 });
 
+//submits ingArr to the fetch request for getRecipe()
 submitBtnEl.addEventListener('click', function (event) {
     event.preventDefault();
     getRecipe(ingArr);
 });
 
+//listens for clicks on the recipeBtnHolder and taps into their data attributes to set image, instructions, and ingredients.
 recipeBtnHolder.addEventListener('click', (event) => {
     let chosenRecipe = event.target.getAttribute('data-id');
     recipeName.textContent = event.target.textContent;
@@ -83,7 +85,6 @@ recipeBtnHolder.addEventListener('click', (event) => {
     let listIngU = event.target.getAttribute('data-usedIng');
     let listIngM = event.target.getAttribute('data-missIng')
     let recipeIngArr = listIngM.concat(listIngU)
-    console.log(recipeIngArr);
     for (let i = 0; i < recipeIngArr.split(',,').length; i++) {
         let recipeIng = document.createElement('li');
         recipeIng.textContent = recipeIngArr.split(',,')[i];
@@ -95,7 +96,7 @@ recipeBtnHolder.addEventListener('click', (event) => {
             return response.json();
         })
         .then(function (data) {
-            console.log(data)
+
             for (let i = 0; i < data[0].steps.length; i++) {
                 let step = document.createElement('li');
                 step.textContent = data[0].steps[i].step;
