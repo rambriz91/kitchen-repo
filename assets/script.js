@@ -2,11 +2,12 @@ var addBtnEl = document.getElementById('addBtn');
 var clearBtnEl = document.getElementById('clearList');
 var submitBtnEl = document.getElementById('submit');
 var userInput = document.getElementById('userInput');
-var ingList = document.getElementById('ingList')
+var ingList = document.getElementById('ingList');
 var recipeImgEl = document.getElementById('recipeImg');
 var recipeName = document.getElementById('recipeName');
 var recipeBtnHolder = document.getElementById('recipeBtnHolder');
 var stepsEl = document.getElementById('steps');
+var ingUsedEl = document.getElementById('ingUsed');
 
 var APIkey = '1e8651b92cc9448eb4ff9216c557959f';
 
@@ -27,7 +28,6 @@ addBtnEl.addEventListener('click', function(event) {
 
 // fetch request for the spoon APIkey. 
 function getRecipe(ingArr) {
-    console.log(ingArr);
     if(ingArr ===[]) {
         return;
     };
@@ -38,12 +38,25 @@ function getRecipe(ingArr) {
             return response.json();
         })
         .then(function (data) {
+            console.log(data);
             for (let i = 0; i < 5; i++) {
                 let recipeBtn = document.createElement('button');
                 recipeBtn.textContent = data[i].title;
                 recipeBtn.setAttribute('class', 'is-primary button');
                 recipeBtn.setAttribute('data-id', data[i].id);
                 recipeBtn.setAttribute('data-img', data[i].image);
+                let usedIng = data[i].usedIngredients;
+                let usedIngArr = [];
+                for (let j = 0; j < usedIng.length; j++) {
+                    usedIngArr.push(usedIng[j].original);
+                }
+                recipeBtn.setAttribute('data-usedIng', usedIngArr)
+                let missIng = data[i].missedIngredients;
+                let missIngArr = [];
+                for (let j = 0; j < missIng.length; j++) {
+                    missIngArr.push(missIng[j].original);
+                }
+                recipeBtn.setAttribute('data-missIng', missIngArr)
                 recipeBtnHolder.appendChild(recipeBtn);
             };
         })
