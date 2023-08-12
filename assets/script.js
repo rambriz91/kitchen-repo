@@ -93,6 +93,12 @@ recipeBtnHolder.addEventListener('click', (event) => {
     let listIngU = event.target.getAttribute('data-usedIng');
     let listIngM = event.target.getAttribute('data-missIng');
     let recipeIngArr = listIngM.concat(listIngU);
+    while(ingUsedEl.firstChild) {
+        ingUsedEl.removeChild(ingUsedEl.firstChild);
+    };
+    while (stepsEl.firstChild) {
+        stepsEl.removeChild(stepsEl.firstChild);
+    };
     for (let i = 0; i < recipeIngArr.split(',,').length; i++) {
         let recipeIng = document.createElement('li');
         recipeIng.textContent = recipeIngArr.split(',,')[i];
