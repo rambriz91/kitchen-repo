@@ -39,6 +39,11 @@ function getRecipe(ingArr) {
             return response.json();
         })
         .then(function (data) {
+            ingArr = [];
+            while (recipeBtnHolder.firstChild) {
+                recipeBtnHolder.removeChild(recipeBtnHolder.firstChild);
+                // ingList.removeChild(ingList.firstChild);
+            };
             for (let i = 0; i < 5; i++) {
                 let recipeBtn = document.createElement('button');
                 recipeBtn.textContent = data[i].title;
@@ -57,9 +62,12 @@ function getRecipe(ingArr) {
                 for (let j = 0; j < missIng.length; j++) {
                     missIngArr.push(missIng[j].original+',');
                 }
-                recipeBtn.setAttribute('data-missIng', missIngArr)
+                recipeBtn.setAttribute('data-missIng', missIngArr);
                 recipeBtnHolder.appendChild(recipeBtn);
             };
+            while (ingList.firstChild) {
+                ingList.removeChild(ingList.firstChild);
+            }
         })
 };
 //clears the ingredients list (ingArr)
@@ -83,8 +91,14 @@ recipeBtnHolder.addEventListener('click', (event) => {
     recipeName.textContent = event.target.textContent;
     recipeImgEl.src = event.target.getAttribute('data-img');
     let listIngU = event.target.getAttribute('data-usedIng');
-    let listIngM = event.target.getAttribute('data-missIng')
-    let recipeIngArr = listIngM.concat(listIngU)
+    let listIngM = event.target.getAttribute('data-missIng');
+    let recipeIngArr = listIngM.concat(listIngU);
+    while(ingUsedEl.firstChild) {
+        ingUsedEl.removeChild(ingUsedEl.firstChild);
+    };
+    while (stepsEl.firstChild) {
+        stepsEl.removeChild(stepsEl.firstChild);
+    };
     for (let i = 0; i < recipeIngArr.split(',,').length; i++) {
         let recipeIng = document.createElement('li');
         recipeIng.textContent = recipeIngArr.split(',,')[i];
