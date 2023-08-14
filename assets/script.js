@@ -42,7 +42,6 @@ function getRecipe(ingArr) {
             ingArr = [];
             while (recipeBtnHolder.firstChild) {
                 recipeBtnHolder.removeChild(recipeBtnHolder.firstChild);
-                // ingList.removeChild(ingList.firstChild);
             };
             for (let i = 0; i < 5; i++) {
                 let recipeBtn = document.createElement('button');
@@ -65,6 +64,7 @@ function getRecipe(ingArr) {
                 recipeBtn.setAttribute('data-missIng', missIngArr);
                 recipeBtnHolder.appendChild(recipeBtn);
             };
+            handleHistory();
             while (ingList.firstChild) {
                 ingList.removeChild(ingList.firstChild);
             }
@@ -117,4 +117,21 @@ recipeBtnHolder.addEventListener('click', (event) => {
                 stepsEl.appendChild(step);
             }
         })
-})
+});
+
+function handleHistory () {
+    if(recipeBtnHolder.innerHTML === '') {
+        return;
+    }
+    JSON.stringify(localStorage.setItem('recipe-history', recipeBtnHolder.innerHTML))
+};
+
+function loadHistory () {
+    if(localStorage.getItem('recipe-history') === '') {
+        return;
+    } 
+    let recipeHistory =localStorage.getItem('recipe-history')
+    recipeBtnHolder.innerHTML = recipeHistory;
+};
+
+loadHistory();
