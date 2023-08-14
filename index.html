@@ -7,7 +7,8 @@
     <title>Everything but the Kitchen Sink</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sarabun:wght@400;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Sarabun:wght@400;800&display=swap"
+        rel="stylesheet">
     <link rel="stylesheet" href="./assets/reset.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/style.css">
@@ -20,29 +21,48 @@
     </header>
     <main>
         <section>
-            <div>
-                <img id="recipeImg" src="" alt="">
-            </div>
-            <div>
-                <h2 id="recipeName" class="subtitle is-3"></h2>
-                <h3 class="title">Instructions</h3>
-                <ol id="steps"></ol>
-                <h3 class="title">Ingredients</h3>
-                <ul id="ingUsed"></ul>
-                <ul id="recipeBtnHolder"></ul>
-            </div>
+            <div class="tile is-ancestor">
+
+
+                <div class="tile is-4">
+                    <img id="recipeImg" src="" alt="">
+                </div>
+                <div>
+                    <div class="box">
+                        <h2 id="recipeName" class="subtitle is-3"></h2>
+                    </div>
+                    <!--instructions box-->
+                    <!-- <div class="message is-warning is-large">
+                    <div class="message-header">
+                        <p>Recipe Instructions</p>
+                    </div>
+                    <div class="message-body">
+                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex nesciunt facilis nulla quibusdam
+                            ipsum, non labore, nobis eveniet tempora aperiam impedit maxime repudiandae! Possimus, quo
+                            adipisci ea quibusdam odit suscipit.</p>
+                    </div>
+                </div> -->
+                    <!-- <h3 class="title">Instructions</h3> -->
+                    <div class="content is-normal">
+                        <ol id="steps"></ol>
+                        <h3 class="title">Ingredients</h3>
+                        <ul id="ingUsed"></ul>
+                        <ul id="recipeBtnHolder"></ul>
+                    </div>
+                </div>
+                </div>
         </section>
         <section>
             <h2></h2>
             <div>
                 <ul id="ingList"></ul>
             </div>
-            <div>
+            <div class="buttons">
                 <form action="">
-                    <input  id= "userInput" type="text">
-                    <button class="button is-success" id="addBtn">Add</button>
-                    <button class="button is-success" id="clearList">Clear List</button>
-                    <button class="button is-success" id="submit">Submit</button>
+                    <input id="userInput" type="text">
+                    <button class="button is-warning is-rounded" id="addBtn">Add</button>
+                    <button class="button is-warning is-rounded" id="clearList">Clear List</button>
+                    <button class="button is-warning is-rounded" id="submit">Submit</button>
                 </form>
             </div>
             <p></p>

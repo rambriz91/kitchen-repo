@@ -7,7 +7,7 @@
     --white: #ffffff;
 }
 
-header{
+header {
     font-family: 'Bebas Neue', sans-serif;
     font-size: 90px;
     color: var(--white);
@@ -17,7 +17,7 @@ header{
 body {
     font-family: 'Sarabun', sans-serif;
     font-size: 25px;
-    background-color: var(--whiteish);
+    background-color: var(--brown);
 }
 
 #hero {
@@ -27,7 +27,25 @@ body {
     background-size: cover;
     height: 30%;
     display: flex;
-    justify-content: center; 
+    justify-content: center;
     align-items: center;
 
+}
+
+.message {
+    align-items: right;
+
+    width: 500px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: 0;
+    align-self: flex-end;
+
+
+}
+
+.title {
+
+    margin-left: auto;
+    margin-right: 0;
 }
