@@ -32,6 +32,13 @@ body {
 
 }
 
+img {
+    position: relative;
+    margin: auto !important;
+    width: 85% !important;
+    top: -15%;
+}
+
 .message {
     align-items: right;
 
