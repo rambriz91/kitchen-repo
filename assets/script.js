@@ -47,7 +47,7 @@ function getRecipe(ingArr) {
             for (let i = 0; i < 5; i++) {
                 let recipeBtn = document.createElement('button');
                 recipeBtn.textContent = data[i].title;
-                recipeBtn.setAttribute('class', 'is-primary button');
+                recipeBtn.setAttribute('class', 'is-warning is-rounded button');
                 recipeBtn.setAttribute('data-id', data[i].id);
                 recipeBtn.setAttribute('data-img', data[i].image);
                 let usedIng = data[i].usedIngredients;
