@@ -37,11 +37,14 @@ body {
 
 }
 
+#recipeName {
+    font-family: 'Bebas Neue', sans-serif;
+}
+
 img {
     position: relative;
-    margin: auto !important;
     width: 85% !important;
-    top: -15%;
+    top: 20px;
 }
 
 .message {
