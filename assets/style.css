@@ -61,3 +61,6 @@ img {
     margin-left: auto;
     margin-right: 0;
 }
+#quoteBlock{
+    display: block;
+}

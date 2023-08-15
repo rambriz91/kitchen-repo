@@ -8,6 +8,9 @@ var recipeName = document.getElementById('recipeName');
 var recipeBtnHolder = document.getElementById('recipeBtnHolder');
 var stepsEl = document.getElementById('steps');
 var ingUsedEl = document.getElementById('ingUsed');
+var quote = document.getElementById('quote');
+var author = document.getElementById('author');
+
 
 var APIkey = '1e8651b92cc9448eb4ff9216c557959f';
 
@@ -52,14 +55,14 @@ function getRecipe(ingArr) {
                 let usedIng = data[i].usedIngredients;
                 let usedIngArr = [];
                 for (let j = 0; j < usedIng.length; j++) {
-                    usedIngArr.push(usedIng[j].original+',');
+                    usedIngArr.push(usedIng[j].original + ',');
                 }
-        
+
                 recipeBtn.setAttribute('data-usedIng', usedIngArr)
                 let missIng = data[i].missedIngredients;
                 let missIngArr = [];
                 for (let j = 0; j < missIng.length; j++) {
-                    missIngArr.push(missIng[j].original+',');
+                    missIngArr.push(missIng[j].original + ',');
                 }
                 recipeBtn.setAttribute('data-missIng', missIngArr);
                 recipeBtnHolder.appendChild(recipeBtn);
@@ -93,7 +96,7 @@ recipeBtnHolder.addEventListener('click', (event) => {
     let listIngU = event.target.getAttribute('data-usedIng');
     let listIngM = event.target.getAttribute('data-missIng');
     let recipeIngArr = listIngM.concat(listIngU);
-    while(ingUsedEl.firstChild) {
+    while (ingUsedEl.firstChild) {
         ingUsedEl.removeChild(ingUsedEl.firstChild);
     };
     while (stepsEl.firstChild) {
@@ -119,19 +122,35 @@ recipeBtnHolder.addEventListener('click', (event) => {
         })
 });
 
-function handleHistory () {
-    if(recipeBtnHolder.innerHTML === '') {
+function handleHistory() {
+    if (recipeBtnHolder.innerHTML === '') {
         return;
     }
     JSON.stringify(localStorage.setItem('recipe-history', recipeBtnHolder.innerHTML))
 };
 
-function loadHistory () {
-    if(localStorage.getItem('recipe-history') === '') {
+function loadHistory() {
+    if (localStorage.getItem('recipe-history') === '') {
         return;
-    } 
-    let recipeHistory =localStorage.getItem('recipe-history')
+    }
+    let recipeHistory = localStorage.getItem('recipe-history')
     recipeBtnHolder.innerHTML = recipeHistory;
 };
+
+var category = 'food'
+$.ajax({
+    method: 'GET',
+    url: 'https://api.api-ninjas.com/v1/quotes?category=' + category,
+    headers: { 'X-Api-Key': 'z3tY0JdFrofs+zFhG636sQ==i9EPBOI8SWSk1UhJ' },
+    contentType: 'application/json',
+    success: function (result) {
+        console.log(result);
+        author.textContent = result[0].author;
+        quote.textContent = result[0].quote;
+    },
+    error: function ajaxError(jqXHR) {
+        console.error('Error: ', jqXHR.responseText);
+    }
+});
 
 loadHistory();

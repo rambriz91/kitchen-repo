@@ -12,6 +12,7 @@
     <link rel="stylesheet" href="./assets/reset.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
     <link rel="stylesheet" href="./assets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </head>
 
 <body>
@@ -21,27 +22,25 @@
     </header>
     <main>
         <section>
-            <div class="tile is-ancestor">
+            <div class="tile is-ancestor ">
 
 
-                <div class="tile is-4">
-                    <img id="recipeImg" src="" alt="">
+                <div class="tile is-4 ">
+                    <img id="recipeImg" src="" alt="" >
+                    <div id="quoteBlock">
+                        <p id="quote"></p>
+                        <h3 id="author"></h3>
+                    </div>
                 </div>
+
+
+
+
                 <div>
                     <div class="box">
                         <h2 id="recipeName" class="subtitle is-3"></h2>
                     </div>
-                    <!--instructions box-->
-                    <!-- <div class="message is-warning is-large">
-                    <div class="message-header">
-                        <p>Recipe Instructions</p>
-                    </div>
-                    <div class="message-body">
-                        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ex nesciunt facilis nulla quibusdam
-                            ipsum, non labore, nobis eveniet tempora aperiam impedit maxime repudiandae! Possimus, quo
-                            adipisci ea quibusdam odit suscipit.</p>
-                    </div>
-                </div> -->
+
                     <h3 class="title">Instructions</h3>
                     <div class="content is-normal">
                         <ol id="steps"></ol>
@@ -49,8 +48,9 @@
                         <ul id="ingUsed"></ul>
                         <ul id="recipeBtnHolder"></ul>
                     </div>
+
                 </div>
-                </div>
+            </div>
         </section>
         <section>
             <h2 class="title">I have:</h2>
@@ -69,6 +69,7 @@
         </section>
     </main>
     <script src="./assets/script.js"></script>
+
 </body>
 
 </html>
