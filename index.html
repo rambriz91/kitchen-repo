@@ -19,22 +19,21 @@
     <header id="hero">
         <h1>Everything but the Kitchen sink</h1>
     </header>
-    <main>
-        <section>
-            <div class="tile is-ancestor is-12">
-                <div class="tile is-parent is-vertical is-4 ">
-                    <img id="recipeImg" src="" alt="">
-                    <div id="quoteBlock" class="tile subtitle">
-                        <p id="quote"></p>
+    <main class="columns is-multiline">
+        <section class="columns column is-full ml-2">
+                <div class="column is-one-third">
+                    <img id="recipeImg" class="mb-5" src="" alt="">
+                    <div id="quoteBlock">
+                        <p id="quote"class="is-italic mb-2"></p>
                         <h3 id="author"></h3>
                     </div>
                 </div>
-                <div>
+                <div class="column is-two-thirds">
                     <div class="box">
-                        <h2 id="recipeName" class="subtitle is-3"></h2>
+                        <h2 id="recipeName"></h2>
                     </div>
 
-                    <h3 class="title">Instructions</h3>
+                    <h3 class= "title">Instructions</h3>
                     <div class="content is-normal">
                         <ol id="steps"></ol>
                         <h3 class="title">Ingredients</h3>
@@ -43,10 +42,9 @@
                     </div>
 
                 </div>
-            </div>
         </section>
-        <section>
-            <h2 class="title">I have:</h2>
+        <section class="column is-one-third ml-2">
+            <h3 class="title">I have:</h3>
             <div>
                 <ul id="ingList"></ul>
             </div>
