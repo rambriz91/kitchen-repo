@@ -45,6 +45,7 @@ img {
     position: relative;
     width: 85% !important;
     top: 20px;
+    border-radius: 6px;
 }
 
 .message {
