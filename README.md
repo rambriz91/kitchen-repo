@@ -2,7 +2,7 @@
 
 ## Description
 
-This project required us developers to work collaboratively on a project to solve a real-world problem. We implemented a user story and mock-up as a guidline to develop an app that allows the user to input ingredients that they have on hand and the app will five recipe buttons with suggested recipes based on user ingredient submission. The user can then click the recipe button to generate an image, ingredients required, and detailed instructions on preparation. The app features two APIs, one for recipe generation and another for food related quotes.
+This project required us developers to work collaboratively on a project to solve a real-world problem. We implemented a user story and mock-up as a guideline to develop an app that allows the user to input ingredients that they have on hand. The app will generate five recipe buttons with suggested recipes based on user ingredient submission. The user can then click the recipe button to generate an image, ingredients required, and detailed instructions on preparation. The app features two APIs, one for recipe generation and another for food related quotes.
 
 ## Tasks 
 
