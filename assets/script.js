@@ -122,6 +122,7 @@ recipeBtnHolder.addEventListener('click', (event) => {
         })
 });
 
+//stores buttons in the recipe holder as a string in local storage
 function handleHistory() {
     if (recipeBtnHolder.innerHTML === '') {
         return;
@@ -129,6 +130,7 @@ function handleHistory() {
     JSON.stringify(localStorage.setItem('recipe-history', recipeBtnHolder.innerHTML))
 };
 
+// grabs recipeBtn information from the local storage and displays them as innerHTML in the recipe holder
 function loadHistory() {
     if (localStorage.getItem('recipe-history') === '') {
         return;
@@ -137,6 +139,7 @@ function loadHistory() {
     recipeBtnHolder.innerHTML = recipeHistory;
 };
 
+//Ajax fetch method for quotes.
 var category = 'food'
 $.ajax({
     method: 'GET',
@@ -144,8 +147,7 @@ $.ajax({
     headers: { 'X-Api-Key': 'z3tY0JdFrofs+zFhG636sQ==i9EPBOI8SWSk1UhJ' },
     contentType: 'application/json',
     success: function (result) {
-        console.log(result);
-        author.textContent = result[0].author;
+        author.textContent = '~ '+result[0].author;
         quote.textContent = result[0].quote;
     },
     error: function ajaxError(jqXHR) {
